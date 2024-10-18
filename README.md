@@ -68,3 +68,28 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+```
+var numSubarraysWithSum = function(nums, goal) {
+    return findSubArray(nums, goal) - findSubArray(nums, goal - 1);
+};
+
+var findSubArray = function(nums, target) {
+    if(target < 0) return 0;
+    let l = 0;
+    let sum = 0;
+    let subArrCount = 0;
+    const n = nums.length;
+    for(let r=0; r<n; r++) {
+        if(nums[r] === 1) sum++;
+        while(l < n && sum > target) {
+            if(nums[l] === 1) sum--;
+            l++;
+        }
+        subArrCount += (r - l + 1);
+    }
+    return subArrCount;
+}
+```
+
